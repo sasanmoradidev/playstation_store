@@ -16,6 +16,7 @@ export async function Header() {
           <Link href="/login">Login</Link>
         )}
       </nav>
+        <Link href="/about">About</Link>
     </header>
   );
 }

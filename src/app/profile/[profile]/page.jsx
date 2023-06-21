@@ -1,27 +1,25 @@
-"use client"
+// "use client"
 
 import Head from "next/head";
-import { useRouter } from "next/navigation";
-export async function getServerSideProps({ params }) {
-    const { profile } = params;
+export async function fetchdata() {
+    const data = await fetch('https://api.slingacademy.com/v1/sample-data/users/1')
+    const jsonData = await data.json();
+    console.log(jsonData);
     return {
-        props: {
-            profile
-        }
+        jsonData
     }
 }
 
-function Profile(props) {
+async function Profile(props) {
     const { profile } = props.params;
-    const { query } = useRouter();
+    const {phone,email, street} = (await fetchdata()).jsonData.user;
+    // console.log(data);
     return (
         <>
-            {console.log(query)}
-            <Head>
-                <title>{profile}</title>
-            </Head>
-            <div>{profile} profile page is</div>
-            <div>{JSON.stringify(query)}</div>
+            <title>{profile}</title>
+            <div>{profile} profile page</div>
+            <p>{JSON.stringify(props)}</p>
+            <p>{JSON.stringify(email)}</p>
         </>)
 }
 

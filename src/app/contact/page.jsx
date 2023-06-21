@@ -1,7 +1,11 @@
-export default function Contact(){
-    return(
+import Head from "next/head"
+export default function Contact() {
+    return (
         <>
-            <h1>Contact page</h1>
+            <Head>
+                <title>Banc</title>
+            </Head>
+            <h1>Contact page h1</h1>
         </>
     )
 }
